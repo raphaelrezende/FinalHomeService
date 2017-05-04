@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">HomeService</string>
+    <string name="hint_username">E-mail</string>
+    <string name="hint_password">Senha</string>
+
+    <string name="button_in">Entrar</string>
+    <string name="button_cadastrar">Cadastrar</string>
+
+    <string name="load_login">Verificando credenciais</string>
+
+    <string name="error_email_empty">Email não pode ser vazio</string>
+    <string name="error_password_empty">Senha não pode ser vazia</string>
+    <string name="error_password_small">Senha não pode ter menos que 6 caracteres</string>
+
+</resources>
