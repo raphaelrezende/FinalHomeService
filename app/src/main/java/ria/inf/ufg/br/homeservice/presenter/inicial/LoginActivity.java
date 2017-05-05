@@ -12,6 +12,7 @@ import ria.inf.ufg.br.homeservice.R;
 import ria.inf.ufg.br.homeservice.BaseActivity;
 import ria.inf.ufg.br.homeservice.model.FormProblemException;
 import ria.inf.ufg.br.homeservice.model.Usuario;
+import ria.inf.ufg.br.homeservice.presenter.categorias.ListaCategoriasActivity;
 
 public class LoginActivity extends BaseActivity {
 
@@ -92,7 +93,8 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void cadastrar(View v) {
-        Intent intent = new Intent(this,CadastroActivity.class);
+        // Por enquanto está chamando a pagina de categorias apenas para testar
+        Intent intent = new Intent(this, ListaCategoriasActivity.class);
         startActivity(intent);
         //finish();
 
