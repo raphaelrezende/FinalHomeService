@@ -17,7 +17,7 @@ import ria.inf.ufg.br.homeservice.model.Usuario;
 
 public class UsuarioDAO extends SQLiteOpenHelper {
 
-    private static final String DB_NAME = "usuarios.db";
+    private static final String DB_NAME = "homeservice.db";
     private static final int DB_VERSION = 2;
     private static final String TABLE_USUARIOS = "usuarios";
 

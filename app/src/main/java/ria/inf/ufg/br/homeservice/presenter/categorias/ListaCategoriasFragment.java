@@ -20,6 +20,7 @@ import java.util.List;
 
 import ria.inf.ufg.br.homeservice.BaseFragment;
 import ria.inf.ufg.br.homeservice.R;
+import ria.inf.ufg.br.homeservice.data.CategoriaDAO;
 import ria.inf.ufg.br.homeservice.model.Categoria;
 import ria.inf.ufg.br.homeservice.web.WebListaCategorias;
 
@@ -51,9 +52,6 @@ public class ListaCategoriasFragment extends BaseFragment {
         EventBus.getDefault().register(this);
         initRecycler();
         getCategorias();
-
-        //pegaDoBanco();
-
     }
 
     @Override
@@ -85,21 +83,9 @@ public class ListaCategoriasFragment extends BaseFragment {
 
     private void getCategorias() {
         showDialogWithMessage(getString(R.string.load_categorias));
-//        String token = EasySharedPreferences.getStringFromKey(getActivity(),
-//                EasySharedPreferences.KEY_TOKEN);
-        WebListaCategorias webListaCategorias = new WebListaCategorias();
-        webListaCategorias.call();
+        CategoriaDAO categoriaDAO = new CategoriaDAO(getActivity());
+        adapter.setCategorias(categoriaDAO.getAll());
         adapter.notifyDataSetChanged();
         dismissDialog();
     }
-
-//    private boolean conectado() {
-//        ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-//        return cm.getActiveNetworkInfo() != null;
-//    }
-
-//    private void pegaDoBanco() {
-//        CategoriaDAO dao = new CategoriaDAO(getActivity());
-//        adapter.setCategorias(dao.getAll());
-//    }
 }
