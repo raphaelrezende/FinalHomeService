@@ -11,10 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,16 +18,15 @@ import ria.inf.ufg.br.homeservice.BaseFragment;
 import ria.inf.ufg.br.homeservice.R;
 import ria.inf.ufg.br.homeservice.data.CategoriaDAO;
 import ria.inf.ufg.br.homeservice.model.Categoria;
-import ria.inf.ufg.br.homeservice.web.WebListaCategorias;
 
 
 public class ListaCategoriasFragment extends BaseFragment {
     private List<Categoria> categoriaList;
     private AdapterCategoria adapter;
+    CategoriaDAO categoriaDAO;
 
 
     public ListaCategoriasFragment() {
-
     }
 
 
@@ -49,15 +44,15 @@ public class ListaCategoriasFragment extends BaseFragment {
     @Override
     public void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
         initRecycler();
+        limpaBD();
+        popula();
         getCategorias();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        EventBus.getDefault().unregister(this);
     }
 
     public void initRecycler() {
@@ -67,25 +62,31 @@ public class ListaCategoriasFragment extends BaseFragment {
         recyclerView.setAdapter(adapter);
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(Exception exception) {
-        dismissDialog();
-        showAlert(exception.getMessage());
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(List<Categoria> categorias) {
-        dismissDialog();
-        adapter.setCategorias(categorias);
-        adapter.notifyDataSetChanged();
-    }
-
-
     private void getCategorias() {
         showDialogWithMessage(getString(R.string.load_categorias));
-        CategoriaDAO categoriaDAO = new CategoriaDAO(getActivity());
-        adapter.setCategorias(categoriaDAO.getAll());
+        categoriaDAO = new CategoriaDAO(getActivity());
+        categoriaList = categoriaDAO.getAll();
+        adapter.setCategorias(categoriaList);
         adapter.notifyDataSetChanged();
         dismissDialog();
+    }
+
+    private void popula() {
+        categoriaDAO = new CategoriaDAO(getActivity());
+        for (int i = 2; i < 5;i++) {
+            Categoria categoria = new Categoria();
+            categoria.setId(i);
+            categoria.setNome("categoria" + i);
+            categoria.setDescricao("descricao" + i);
+            categoriaDAO.create(categoria);
+        }
+    }
+
+    private  void limpaBD() {
+         categoriaDAO = new CategoriaDAO(getActivity());
+        List<Categoria> categorias = categoriaDAO.getAll();
+        for (Categoria cat : categorias) {
+            categoriaDAO.delete(cat);
+        }
     }
 }

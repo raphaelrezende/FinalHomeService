@@ -7,8 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
+import java.util.List;
+
 import ria.inf.ufg.br.homeservice.BaseActivity;
 import ria.inf.ufg.br.homeservice.R;
+import ria.inf.ufg.br.homeservice.data.CategoriaDAO;
+import ria.inf.ufg.br.homeservice.model.Categoria;
 
 public class ListaCategoriasActivity extends BaseActivity {
 
@@ -17,21 +21,19 @@ public class ListaCategoriasActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_categorias);
 
-
         initView();
         criaBotaoVoltar();
-
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//    }
 
 //    private void initToolbar(){
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

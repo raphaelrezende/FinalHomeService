@@ -15,9 +15,6 @@ import java.util.List;
 import ria.inf.ufg.br.homeservice.R;
 import ria.inf.ufg.br.homeservice.model.Categoria;
 
-/**
- * Created by raphael on 05/05/17.
- */
 
 public class AdapterCategoria extends RecyclerView.Adapter<AdapterCategoria.CategoriaViewHolder> {
 
@@ -48,13 +45,13 @@ public class AdapterCategoria extends RecyclerView.Adapter<AdapterCategoria.Cate
         final Categoria categoria = categorias.get(position);
         holder.nameView.setText(categoria.getNome());
         holder.descriptionView.setText(categoria.getDescricao());
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //abreDescricao(categoria);
-            }
-        });
+//
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                abreDescricao(categoria);
+//            }
+//        });
     }
 
     @Override
@@ -81,6 +78,7 @@ public class AdapterCategoria extends RecyclerView.Adapter<AdapterCategoria.Cate
             descriptionView = (TextView)itemView.findViewById(R.id.label_categoria_desc);
         }
     }
+
 //    private void abreDescricao(Categoria categoria) {
 //        Intent intent = new Intent(this.context, CategoriaDetailActivity.class);
 //        EventBus.getDefault().postSticky(categoria);
