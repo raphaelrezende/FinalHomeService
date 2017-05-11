@@ -25,23 +25,6 @@ public class ListaCategoriasActivity extends BaseActivity {
         criaBotaoVoltar();
     }
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//    }
-//
-//    @Override
-//    public void onStop() {
-//        super.onStop();
-//    }
-
-//    private void initToolbar(){
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.branco));
-//    }
-
     public void initView(){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

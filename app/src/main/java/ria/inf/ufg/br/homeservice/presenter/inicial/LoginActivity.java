@@ -41,20 +41,10 @@ public class LoginActivity extends BaseActivity {
 
         showDialogWithMessage(getString(R.string.load_login));
 
-        //tryLogin(password,email);
+
+        tryLogin(password,email);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
-    }
 
     private void checkPassword() throws FormProblemException{
         String password = getStringFromEdit(R.id.password);
@@ -74,27 +64,20 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
-//    private void tryLogin(String password, String email) {
-//        WebLogin webLogin = new WebLogin(email,password);
-//        webLogin.call();
-//    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(Usuario usuario) {
-        dismissDialog();
-         goToNext();
+    private void tryLogin(String password, String email) {
+        // Implementar a verificação de credenciais
+        goToCategorias();
     }
 
-    private void goToNext() {
-        //Intent intent = new Intent(this,CadastroActivity.class);
-        //startActivity(intent);
-        finish();
-
-    }
-
-    public void cadastrar(View v) {
-        // Por enquanto está chamando a pagina de categorias apenas para testar
+    private void goToCategorias() {
         Intent intent = new Intent(this, ListaCategoriasActivity.class);
+        startActivity(intent);
+        //finish();
+
+    }
+
+    public void goToCadastrar(View v) {
+        Intent intent = new Intent(this, CadastroActivity.class);
         startActivity(intent);
         //finish();
 

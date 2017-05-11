@@ -24,10 +24,20 @@
         </activity>
         <activity
             android:name=".presenter.inicial.CadastroActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".presenter.inicial.LoginActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".presenter.inicial.LoginActivity"/>
+        </activity>
         <activity
             android:name=".presenter.categorias.ListaCategoriasActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"/>
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".presenter.inicial.LoginActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".presenter.inicial.LoginActivity"/>
+        </activity>
     </application>
 
 </manifest>
